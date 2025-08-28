@@ -75,6 +75,9 @@ export const styles: { [key: string]: React.CSSProperties } = {
     fontSize: '14px',
     fontWeight: 'bold' as const,
     transition: 'all 0.2s ease',
+    touchAction: 'manipulation',
+    WebkitTapHighlightColor: 'transparent',
+    minHeight: '44px',
   },
   
   categoryTabActive: {
@@ -95,6 +98,7 @@ export const styles: { [key: string]: React.CSSProperties } = {
     padding: '20px',
     transition: 'all 0.2s ease',
     position: 'relative' as const,
+    touchAction: 'manipulation',
   },
   
   phraseCardHover: {
@@ -125,6 +129,8 @@ export const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '50%',
     width: '50px',
     height: '50px',
+    minWidth: '50px',
+    minHeight: '50px',
     fontSize: '20px',
     cursor: 'pointer',
     display: 'flex',
@@ -132,6 +138,9 @@ export const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: 'center',
     transition: 'all 0.2s ease',
     flexShrink: 0,
+    touchAction: 'manipulation',
+    WebkitTapHighlightColor: 'transparent',
+    userSelect: 'none' as const,
   },
   
   playButtonHover: {

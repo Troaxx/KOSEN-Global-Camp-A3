@@ -28,14 +28,23 @@ const VoiceGuide: React.FC = () => {
   const handlePlayPhrase = (phraseId: string, phrase: VoicePhrase) => {
     setPlayingPhrase(phraseId);
     
-    // In a real app, this would use text-to-speech API
-    // For demo purposes, we'll simulate audio playback
+    // Enhanced speech synthesis for better mobile compatibility
     if ('speechSynthesis' in window) {
+      // Stop any currently playing speech
+      speechSynthesis.cancel();
+      
       const utterance = new SpeechSynthesisUtterance(phrase.japanese);
       utterance.lang = 'ja-JP';
       utterance.rate = 0.8;
+      utterance.volume = 1.0;
+      
       utterance.onend = () => setPlayingPhrase(null);
-      speechSynthesis.speak(utterance);
+      utterance.onerror = () => setPlayingPhrase(null);
+      
+      // Small delay to ensure cancellation is processed
+      setTimeout(() => {
+        speechSynthesis.speak(utterance);
+      }, 100);
     } else {
       // Fallback: just show playing state for 2 seconds
       setTimeout(() => setPlayingPhrase(null), 2000);
@@ -50,6 +59,19 @@ const VoiceGuide: React.FC = () => {
 
   const getPlayButtonStyle = (phraseId: string): React.CSSProperties => {
     let buttonStyle: React.CSSProperties = { ...styles.playButton };
+    
+    // Make buttons larger on mobile devices
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      buttonStyle = { 
+        ...buttonStyle, 
+        width: '55px', 
+        height: '55px',
+        minWidth: '55px',
+        minHeight: '55px',
+        fontSize: '22px'
+      };
+    }
     
     if (playingPhrase === phraseId) {
       buttonStyle = { ...buttonStyle, ...styles.playButtonActive };
@@ -73,7 +95,10 @@ const VoiceGuide: React.FC = () => {
           style={getBackButtonStyle()}
           onMouseEnter={() => setHoveredBack(true)}
           onMouseLeave={() => setHoveredBack(false)}
+          onTouchStart={() => setHoveredBack(true)}
+          onTouchEnd={() => setHoveredBack(false)}
           onClick={() => navigate('/')}
+          aria-label="Go back to home"
         >
           ←
         </button>
@@ -101,6 +126,7 @@ const VoiceGuide: React.FC = () => {
                 ...(selectedCategory === category.id ? styles.categoryTabActive : {})
               }}
               onClick={() => setSelectedCategory(category.id)}
+              aria-label={`Filter by ${category.name} category`}
             >
               <span style={styles.categoryIcon}>{category.icon}</span>
               {category.name}
@@ -122,8 +148,11 @@ const VoiceGuide: React.FC = () => {
                   style={getPlayButtonStyle(phrase.id)}
                   onMouseEnter={() => setHoveredButton(phrase.id)}
                   onMouseLeave={() => setHoveredButton(null)}
+                  onTouchStart={() => setHoveredButton(phrase.id)}
+                  onTouchEnd={() => setHoveredButton(null)}
                   onClick={() => handlePlayPhrase(phrase.id, phrase)}
                   disabled={playingPhrase === phrase.id}
+                  aria-label={`Play pronunciation for ${phrase.english}`}
                 >
                   {playingPhrase === phrase.id ? '⏸️' : '▶️'}
                 </button>
