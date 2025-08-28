@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { LOCATIONS } from './constants';
-import { Location } from '../../types';
 
 const JapanGuide: React.FC = () => {
   const navigate = useNavigate();

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { EMERGENCY_CONTACTS, EMERGENCY_PHRASES, SAFETY_TIPS } from './constants';
 
 const Emergency: React.FC = () => {
-  const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [hoveredPhrase, setHoveredPhrase] = useState<string | null>(null);
   const [hoveredTip, setHoveredTip] = useState<string | null>(null);
-  const [hoveredBack, setHoveredBack] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
 
   const handleCall = (number: string, name: string) => {
@@ -53,11 +50,7 @@ const Emergency: React.FC = () => {
       : styles.callButton;
   };
 
-  const getBackButtonStyle = () => {
-    return hoveredBack 
-      ? { ...styles.backButton, ...styles.backButtonHover }
-      : styles.backButton;
-  };
+
 
   return (
     <div style={styles.container}>
