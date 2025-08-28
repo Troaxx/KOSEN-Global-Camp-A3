@@ -177,20 +177,20 @@ export const styles: { [key: string]: React.CSSProperties } = {
   },
   
   menuItem: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.primary,
     border: `2px solid ${COLORS.primary}`,
-    borderRadius: '12px',
+    borderRadius: '20px',
     padding: '20px',
     textDecoration: 'none',
-    color: 'inherit',
+    color: COLORS.background,
     transition: 'all 0.2s ease',
     cursor: 'pointer',
     display: 'block',
   },
   
   menuItemHover: {
-    backgroundColor: COLORS.primary,
-    color: COLORS.background,
+    backgroundColor: '#2563EB',
+    borderColor: '#2563EB',
     transform: 'translateY(-2px)',
     boxShadow: '0 4px 12px rgba(30, 58, 138, 0.3)',
   },
@@ -234,6 +234,8 @@ export const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: COLORS.secondary,
     border: `2px solid ${COLORS.secondary}`,
     marginTop: '10px',
+    borderRadius: '20px',
+    color: COLORS.background,
   },
   
   emergencyButtonHover: {
