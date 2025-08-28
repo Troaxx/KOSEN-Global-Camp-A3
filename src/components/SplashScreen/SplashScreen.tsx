@@ -11,7 +11,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
     const timer = setTimeout(() => {
       setFadeOut(true);
       setTimeout(onFinish, 500);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [onFinish]);
@@ -20,8 +20,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
     position: 'fixed',
     top: 0,
     left: 0,
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%',
     backgroundColor: '#1E3A8A',
     display: 'flex',
     flexDirection: 'column',
@@ -30,6 +30,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
     zIndex: 9999,
     opacity: fadeOut ? 0 : 1,
     transition: 'opacity 0.5s ease-out',
+    WebkitOverflowScrolling: 'touch',
+    overflow: 'hidden',
   };
 
   const logoStyle: React.CSSProperties = {
