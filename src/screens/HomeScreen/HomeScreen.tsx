@@ -24,7 +24,7 @@ const HomeScreen: React.FC = () => {
     <div style={styles.container}>
       <header style={styles.header}>
         <div style={styles.headerTop}>
-          <h1 style={styles.headerTitle}>Japan Travel Guide</h1>
+          <h1 style={styles.headerTitle}>Hello Japan</h1>
           <div style={styles.statusIndicator}>
             <span style={styles.statusDot}></span>
             <span style={styles.statusText}>Live</span>

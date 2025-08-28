@@ -33,6 +33,48 @@ export const JAPAN_RULES: JapanRule[] = [
     importance: 'high'
   },
   {
+    id: 'lining-up',
+    title: 'Lining Up',
+    description: 'When lining up, keep your distance from others and do not push. Wait for your turn and maintain order.',
+    category: 'etiquette',
+    importance: 'high'
+  },
+  {
+    id: 'train-timing',
+    title: 'Train Timing',
+    description: 'Always arrive at the station 10 minutes before the train is scheduled to leave. Do not be late for the train. Japan trains are always on time.',
+    category: 'etiquette',
+    importance: 'high'
+  },
+  {
+    id: 'drinking-and-smoking',
+    title: 'Drinking and Smoking',
+    description: 'Drinking and Smoking is prohibited before 20 years old.',
+    category: 'etiquette',
+    importance: 'high'
+  },
+  {
+    id: 'smoking-in-public',
+    title: 'Smoking in Public',
+    description: 'Smoking in Public is prohibited in most places. There are designated smoking areas in some places.',
+    category: 'etiquette',
+    importance: 'high'
+  },
+  {
+    id: 'trash-disposal',
+    title: 'Trash Disposal',
+    description: 'Always dispose of trash in the designated bins. Do not throw trash on the ground or in the streets. Throw your trash at home if there is no trash bins.',
+    category: 'etiquette',
+    importance: 'high'
+  },
+  {
+    id: 'eating-etiquette',
+    title: 'Eating etiquette',
+    description: 'When eating, do not speak when food is in your mouth.',
+    category: 'culture',
+    importance: 'medium'
+  },
+  {
     id: 'gift-giving',
     title: 'Gift Giving (Omiyage)',
     description: 'Bring small gifts (omiyage) when visiting someone. Present and receive gifts with both hands. The presentation is as important as the gift itself.',
@@ -45,13 +87,6 @@ export const JAPAN_RULES: JapanRule[] = [
     description: 'Never stick chopsticks upright in rice (resembles incense at funerals), don\'t point with them, and don\'t pass food chopstick to chopstick.',
     category: 'etiquette',
     importance: 'high'
-  },
-  {
-    id: 'business-cards',
-    title: 'Business Card Exchange (Meishi)',
-    description: 'Present and receive business cards with both hands. Study the card briefly before carefully placing it in a card case or on the table.',
-    category: 'culture',
-    importance: 'medium'
   },
   {
     id: 'onsen-rules',
@@ -74,11 +109,4 @@ export const JAPAN_RULES: JapanRule[] = [
     category: 'etiquette',
     importance: 'low'
   },
-  {
-    id: 'personal-space',
-    title: 'Personal Space & Physical Contact',
-    description: 'Maintain appropriate distance, avoid physical contact like hugging or touching shoulders. Handshakes are acceptable in business but bowing is preferred.',
-    category: 'general',
-    importance: 'high'
-  }
 ];

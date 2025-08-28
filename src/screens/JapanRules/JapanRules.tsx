@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { JAPAN_RULES } from './constants';
-import { JapanRule } from '../../types';
 
 const JapanRules: React.FC = () => {
-  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const categories = [
@@ -38,8 +35,6 @@ const JapanRules: React.FC = () => {
       ? { ...styles.ruleCard, ...styles.ruleCardHover }
       : styles.ruleCard;
   };
-
-
 
   return (
     <div style={styles.container}>
