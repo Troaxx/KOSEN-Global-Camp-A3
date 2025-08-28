@@ -11,7 +11,6 @@ const VoiceGuide: React.FC = () => {
   const [hoveredBack, setHoveredBack] = useState(false);
   const [playingPhrase, setPlayingPhrase] = useState<string | null>(null);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
-  const [speechInitialized, setSpeechInitialized] = useState(false);
 
   const categories = [
     { id: 'all', name: 'All', icon: '🎤' },
@@ -30,7 +29,6 @@ const VoiceGuide: React.FC = () => {
         const testUtterance = new SpeechSynthesisUtterance('');
         testUtterance.volume = 0;
         speechSynthesis.speak(testUtterance);
-        setSpeechInitialized(true);
       }
     };
 
