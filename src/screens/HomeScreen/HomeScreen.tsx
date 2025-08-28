@@ -24,13 +24,21 @@ const HomeScreen: React.FC = () => {
     <div style={styles.container}>
       <header style={styles.header}>
         <div style={styles.headerTop}>
-          <h1 style={styles.headerTitle}>Hello Japan</h1>
-          <div style={styles.statusIndicator}>
-            <span style={styles.statusDot}></span>
-            <span style={styles.statusText}>Live</span>
+          <div style={styles.logoContainer}>
+            <img 
+              src="/assets/hellojapan_logo.png" 
+              alt="Hello Japan Logo" 
+              style={styles.headerLogo}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+            <div style={styles.titleContainer}>
+              <h1 style={styles.headerTitle}>Hello Japan</h1>
+              <p style={styles.headerSubtitle}>Your essential companion for respectful tourism</p>
+            </div>
           </div>
         </div>
-        <p style={styles.headerSubtitle}>Your essential companion for respectful tourism</p>
       </header>
 
       <main style={styles.content}>

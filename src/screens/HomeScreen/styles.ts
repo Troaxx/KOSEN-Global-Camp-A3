@@ -24,6 +24,30 @@ export const styles: { [key: string]: React.CSSProperties } = {
     marginBottom: '8px',
   },
   
+  logoContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  },
+  
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: '2px',
+  },
+  
+  headerLogo: {
+    width: '48px',
+    height: '48px',
+    borderRadius: '10px',
+    objectFit: 'contain' as const,
+    backgroundColor: '#FFFFFF',
+    padding: '6px',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+    border: '2px solid rgba(255, 255, 255, 0.3)',
+  },
+  
   headerTitle: {
     fontSize: '24px',
     fontWeight: 'bold' as const,
