@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { translations } from '../../translations';
 import { styles } from './styles';
 import { TOURIST_AREAS, CROWD_LEVEL_INFO } from './constants';
 import { TouristArea } from '../../types';
@@ -6,9 +8,12 @@ import ScrollToTop from '../../components/ScrollToTop';
 import BackButton from '../../components/BackButton';
 
 const CrowdLevels: React.FC = () => {
+  const { language } = useLanguage();
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  
+  const t = translations[language];
 
   const locations = ['all', 'Tokyo', 'Kyoto', 'Osaka', 'Kumamoto'];
 
@@ -56,15 +61,15 @@ const CrowdLevels: React.FC = () => {
       <header style={styles.header}>
         <BackButton />
         <div style={styles.headerContent}>
-          <h1 style={styles.headerTitle}>Tourist Areas & Crowd Levels</h1>
-          <p style={styles.headerSubtitle}>Real-time crowd data with dynamic pricing</p>
+          <h1 style={styles.headerTitle}>{t.crowdLevelsTitle}</h1>
+          <p style={styles.headerSubtitle}>{t.crowdLevelsSubtitle}</p>
         </div>
       </header>
 
       <main style={styles.content}>
         <div style={styles.filterSection}>
           <label style={styles.filterLabel} htmlFor="location-filter">
-            Filter by Location:
+            {t.filterByLocation}:
           </label>
           <select
             id="location-filter"
@@ -74,14 +79,14 @@ const CrowdLevels: React.FC = () => {
           >
             {locations.map((location) => (
               <option key={location} value={location}>
-                {location === 'all' ? 'All Locations' : location}
+                {location === 'all' ? t.allLocations : location}
               </option>
             ))}
           </select>
         </div>
 
         <div style={styles.legendBox}>
-          <h3 style={styles.legendTitle}>Crowd Level Legend</h3>
+          <h3 style={styles.legendTitle}>{t.crowdLevelLegend}</h3>
           <div style={styles.legendGrid}>
             {Object.entries(CROWD_LEVEL_INFO).map(([level, info]) => (
               <div key={level} style={styles.legendItem}>
@@ -124,10 +129,10 @@ const CrowdLevels: React.FC = () => {
                 <div style={styles.priceSection}>
                   <div style={styles.priceInfo}>
                     {area.currentPrice === 0 ? (
-                      <p style={styles.freeEntry}>Free Entry</p>
+                      <p style={styles.freeEntry}>{t.freeEntry}</p>
                     ) : (
                       <>
-                        <p style={styles.priceLabel}>Entry Price:</p>
+                        <p style={styles.priceLabel}>{t.entryPrice}:</p>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                           <span style={styles.currentPrice}>
                             ¥{area.currentPrice.toLocaleString()}
@@ -149,7 +154,7 @@ const CrowdLevels: React.FC = () => {
                     onClick={() => handlePurchase(area)}
                     disabled={area.currentPrice === 0}
                   >
-                    {area.currentPrice === 0 ? 'Free Entry' : 'Buy Ticket'}
+                    {area.currentPrice === 0 ? t.freeEntry : t.buyTicket}
                   </button>
                 </div>
               </div>
@@ -159,7 +164,7 @@ const CrowdLevels: React.FC = () => {
 
         {filteredAreas.length === 0 && (
           <div style={styles.noAreasMessage}>
-            <p>No tourist areas found for the selected location.</p>
+            <p>{t.noAreasFound}</p>
           </div>
         )}
       </main>

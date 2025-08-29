@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { translations } from '../../translations';
 import { styles } from './styles';
 import { JAPAN_RULES } from './constants';
 import ScrollToTop from '../../components/ScrollToTop';
 import BackButton from '../../components/BackButton';
 
 const JapanRules: React.FC = () => {
+  const { language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  
+  const t = translations[language];
+
   const categories = [
-    { id: 'all', name: 'All', icon: '📜' },
-    { id: 'bowing', name: 'Bowing', icon: '🙇' },
-    { id: 'etiquette', name: 'Etiquette', icon: '🎯' },
-    { id: 'culture', name: 'Culture', icon: '🎌' },
-    { id: 'general', name: 'General', icon: '📋' },
+    { id: 'all', name: t.all, icon: '📜' },
+    { id: 'bowing', name: t.bowing, icon: '🙇' },
+    { id: 'etiquette', name: t.etiquette, icon: '🎯' },
+    { id: 'culture', name: t.culture, icon: '🎌' },
+    { id: 'general', name: t.general, icon: '📋' },
   ];
 
   const filteredRules = selectedCategory === 'all' 
@@ -44,8 +50,8 @@ const JapanRules: React.FC = () => {
       <header style={styles.header}>
         <BackButton />
         <div style={styles.headerContent}>
-          <h1 style={styles.headerTitle}>Japan Rules & Etiquette</h1>
-          <p style={styles.headerSubtitle}>Essential cultural guidelines for respectful travel</p>
+          <h1 style={styles.headerTitle}>{t.japanRulesTitle}</h1>
+          <p style={styles.headerSubtitle}>{t.japanRulesSubtitle}</p>
         </div>
       </header>
 

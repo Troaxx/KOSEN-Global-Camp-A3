@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { translations } from '../../translations';
 import { styles } from './styles';
 import { VOICE_PHRASES } from './constants';
 import { VoicePhrase } from '../../types';
@@ -6,18 +8,21 @@ import ScrollToTop from '../../components/ScrollToTop';
 import BackButton from '../../components/BackButton';
 
 const VoiceGuide: React.FC = () => {
+  const { language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [playingPhrase, setPlayingPhrase] = useState<string | null>(null);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  
+  const t = translations[language];
 
   const categories = [
-    { id: 'all', name: 'All', icon: '🎤' },
-    { id: 'greeting', name: 'Greeting', icon: '👋' },
-    { id: 'help', name: 'Help', icon: '🆘' },
-    { id: 'direction', name: 'Direction', icon: '🧭' },
-    { id: 'emergency', name: 'Emergency', icon: '🚨' },
-    { id: 'courtesy', name: 'Courtesy', icon: '🙏' },
+    { id: 'all', name: t.all, icon: '🎤' },
+    { id: 'greeting', name: t.greeting, icon: '👋' },
+    { id: 'help', name: t.help, icon: '🆘' },
+    { id: 'direction', name: t.direction, icon: '🧭' },
+    { id: 'emergency', name: t.emergency, icon: '🚨' },
+    { id: 'courtesy', name: t.courtesy, icon: '🙏' },
   ];
 
   // Initialize speech synthesis for mobile compatibility
@@ -174,21 +179,20 @@ const VoiceGuide: React.FC = () => {
       <header style={styles.header}>
         <BackButton />
         <div style={styles.headerContent}>
-          <h1 style={styles.headerTitle}>Voice Guide</h1>
-          <p style={styles.headerSubtitle}>Pre-set phrases for easy communication</p>
+          <h1 style={styles.headerTitle}>{t.voiceGuideTitle}</h1>
+          <p style={styles.headerSubtitle}>{t.voiceGuideSubtitle}</p>
         </div>
       </header>
 
       <main style={styles.content}>
         <div style={styles.instructionBox}>
-          <h3 style={styles.instructionTitle}>💡 How to Use</h3>
+          <h3 style={styles.instructionTitle}>💡 {t.howToUse}</h3>
           <p style={styles.instructionText}>
-            Tap the red play button next to any phrase to hear the Japanese pronunciation. 
-            Show the text to locals if needed.
+            {t.voiceInstructions}
           </p>
           {!('speechSynthesis' in window) && (
             <p style={{ ...styles.instructionText, color: '#DC2626', fontSize: '14px' }}>
-              ⚠️ Speech synthesis is not supported on this device. You can still view the Japanese text and romanization.
+              ⚠️ {t.speechNotSupported}
             </p>
           )}
         </div>

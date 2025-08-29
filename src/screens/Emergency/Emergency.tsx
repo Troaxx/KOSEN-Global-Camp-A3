@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { translations } from '../../translations';
 import { styles } from './styles';
 import { EMERGENCY_CONTACTS, EMERGENCY_PHRASES, SAFETY_TIPS } from './constants';
 import ScrollToTop from '../../components/ScrollToTop';
 import BackButton from '../../components/BackButton';
 
 const Emergency: React.FC = () => {
+  const { language } = useLanguage();
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [hoveredPhrase, setHoveredPhrase] = useState<string | null>(null);
   const [hoveredTip, setHoveredTip] = useState<string | null>(null);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  
+  const t = translations[language];
 
   const handleCall = (number: string, name: string) => {
     // In a real app, this would initiate a phone call
@@ -60,17 +65,16 @@ const Emergency: React.FC = () => {
       <header style={styles.header}>
         <BackButton />
         <div style={styles.headerContent}>
-          <h1 style={styles.headerTitle}>🆘 Emergency Contacts</h1>
+          <h1 style={styles.headerTitle}>🆘 {t.emergencyTitle}</h1>
           <p style={styles.headerSubtitle}>Quick access to essential emergency numbers</p>
         </div>
       </header>
 
       <main style={styles.content}>
         <div style={styles.warningBox}>
-          <h2 style={styles.warningTitle}>🆘 Emergency Only</h2>
+          <h2 style={styles.warningTitle}>🆘 {t.emergencyOnly}</h2>
           <p style={styles.warningText}>
-            Use these numbers only for genuine emergencies. For non-urgent matters, 
-            consult local information or your accommodation staff.
+            {t.emergencyWarning}
           </p>
         </div>
 
@@ -106,7 +110,7 @@ const Emergency: React.FC = () => {
           ))}
         </div>
 
-        <h2 style={styles.sectionTitle}>Emergency Phrases</h2>
+        <h2 style={styles.sectionTitle}>{t.emergencyPhrases}</h2>
         <div style={styles.phrasesGrid}>
           {EMERGENCY_PHRASES.map((phrase) => (
             <div
@@ -122,7 +126,7 @@ const Emergency: React.FC = () => {
           ))}
         </div>
 
-        <h2 style={styles.sectionTitle}>Safety Tips</h2>
+        <h2 style={styles.sectionTitle}>{t.safetyTips}</h2>
         <div style={styles.tipsGrid}>
           {SAFETY_TIPS.map((tip) => (
             <div

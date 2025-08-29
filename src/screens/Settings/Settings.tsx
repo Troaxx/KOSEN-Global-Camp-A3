@@ -71,7 +71,7 @@ const Settings: React.FC = () => {
         <BackButton />
         <div style={styles.headerContent}>
           <h1 style={styles.headerTitle}>⚙️ {t.settingsTitle}</h1>
-          <p style={styles.headerSubtitle}>Customize your experience</p>
+          <p style={styles.headerSubtitle}>{t.customizeExperience}</p>
         </div>
       </header>
 

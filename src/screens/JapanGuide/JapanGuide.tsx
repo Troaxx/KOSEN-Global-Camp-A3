@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { translations } from '../../translations';
 import { styles } from './styles';
 import { LOCATIONS } from './constants';
 import ScrollToTop from '../../components/ScrollToTop';
 import BackButton from '../../components/BackButton';
 
 const JapanGuide: React.FC = () => {
+  const { language } = useLanguage();
   const [selectedLocation, setSelectedLocation] = useState<string>('kumamoto');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-
+  
+  const t = translations[language];
   const currentLocation = LOCATIONS.find(loc => loc.id === selectedLocation);
 
   const getCategoryIcon = (category: string): string => {
@@ -42,15 +46,15 @@ const JapanGuide: React.FC = () => {
       <header style={styles.header}>
         <BackButton />
         <div style={styles.headerContent}>
-          <h1 style={styles.headerTitle}>Japan Recycling Guide</h1>
-          <p style={styles.headerSubtitle}>Location-specific waste sorting rules</p>
+          <h1 style={styles.headerTitle}>{t.japanGuideTitle}</h1>
+          <p style={styles.headerSubtitle}>{t.japanGuideSubtitle}</p>
         </div>
       </header>
 
       <main style={styles.content}>
         <div style={styles.locationSelector}>
           <label style={styles.locationLabel} htmlFor="location-select">
-            Select Location:
+            {t.selectLocation}:
           </label>
           <select
             id="location-select"
@@ -68,8 +72,8 @@ const JapanGuide: React.FC = () => {
 
         {selectedLocation === 'kumamoto' && (
           <div style={styles.currentLocation}>
-            <h3 style={styles.currentLocationTitle}>📍 Current Location</h3>
-            <p style={styles.currentLocationText}>You are currently in Kumamoto</p>
+            <h3 style={styles.currentLocationTitle}>📍 {t.currentLocation}</h3>
+            <p style={styles.currentLocationText}>{t.youAreIn} Kumamoto</p>
           </div>
         )}
 

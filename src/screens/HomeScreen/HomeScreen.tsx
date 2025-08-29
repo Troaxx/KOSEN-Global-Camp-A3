@@ -83,15 +83,6 @@ const HomeScreen: React.FC = () => {
             ))}
           </div>
         </div>
-
-        <div style={styles.tipsSection}>
-          <h3 style={styles.sectionTitle}>💡 Today's Tip</h3>
-          <div style={styles.tipCard}>
-            <p style={styles.tipText}>
-              Remember to bow slightly when greeting locals. A 15° bow is perfect for casual interactions!
-            </p>
-          </div>
-        </div>
       </main>
     </div>
   );
