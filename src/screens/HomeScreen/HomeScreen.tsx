@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { translations } from '../../translations';
 import { styles } from './styles';
-import { MENU_ITEMS } from './constants';
 import ScrollToTop from '../../components/ScrollToTop';
 
 const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  
+  const t = translations[language];
 
   const handleMenuClick = (route: string) => {
     navigate(route);
@@ -36,8 +40,8 @@ const HomeScreen: React.FC = () => {
               }}
             />
             <div style={styles.titleContainer}>
-              <h1 style={styles.headerTitle}>Hello Japan</h1>
-              <p style={styles.headerSubtitle}>Your essential companion for respectful tourism</p>
+              <h1 style={styles.headerTitle}>{t.appTitle}</h1>
+              <p style={styles.headerSubtitle}>{t.appSubtitle}</p>
             </div>
           </div>
         </div>
@@ -46,23 +50,59 @@ const HomeScreen: React.FC = () => {
       <main style={styles.content}>
         <div style={styles.locationSection}>
           <div style={styles.locationHeader}>
-            <h2 style={styles.locationTitle}>📍 My Location</h2>
+            <h2 style={styles.locationTitle}>📍 {t.myLocation}</h2>
             <button style={styles.refreshButton}>🔄</button>
           </div>
           <div style={styles.locationInfo}>
             <span style={styles.locationName}>Kumamoto</span>
-            <span style={styles.locationSubtext}>Kumamoto Prefecture</span>
+            <span style={styles.locationSubtext}>{t.locationSubtext}</span>
           </div>
           <div style={styles.weatherInfo}>
             <span style={styles.weather}>🌤️ 23°C</span>
-            <span style={styles.airQuality}>🟢 Good Air Quality</span>
+            <span style={styles.airQuality}>🟢 {t.goodAirQuality}</span>
           </div>
         </div>
 
         <div style={styles.quickActions}>
-          <h3 style={styles.sectionTitle}>Quick Access</h3>
+          <h3 style={styles.sectionTitle}>{t.quickAccess}</h3>
           <div style={styles.menuGrid}>
-            {MENU_ITEMS.map((item) => (
+            {[
+              {
+                id: 'japan-rules',
+                title: t.japanRules,
+                subtitle: t.japanRulesSubtitle,
+                route: '/japan-rules',
+                icon: '🎌'
+              },
+              {
+                id: 'japan-guide',
+                title: t.japanGuide,
+                subtitle: t.japanGuideSubtitle,
+                route: '/japan-guide',
+                icon: '♻️'
+              },
+              {
+                id: 'voice-guide',
+                title: t.voiceGuide,
+                subtitle: t.voiceGuideSubtitle,
+                route: '/voice-guide',
+                icon: '🎤'
+              },
+              {
+                id: 'crowd-levels',
+                title: t.touristAreas,
+                subtitle: t.crowdLevelsSubtitle,
+                route: '/crowd-levels',
+                icon: '🏯'
+              },
+              {
+                id: 'emergency',
+                title: t.emergency,
+                subtitle: t.emergencyTitle,
+                route: '/emergency',
+                icon: '🆘'
+              }
+            ].map((item) => (
               <button
                 key={item.id}
                 style={getMenuItemStyle(item.id, item.id === 'emergency')}
