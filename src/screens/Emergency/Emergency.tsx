@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { styles } from './styles';
 import { EMERGENCY_CONTACTS, EMERGENCY_PHRASES, SAFETY_TIPS } from './constants';
+import ScrollToTop from '../../components/ScrollToTop';
+import BackButton from '../../components/BackButton';
 
 const Emergency: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -54,9 +56,13 @@ const Emergency: React.FC = () => {
 
   return (
     <div style={styles.container}>
+      <ScrollToTop />
       <header style={styles.header}>
-        <h1 style={styles.headerTitle}>🆘 Emergency Contacts</h1>
-        <p style={styles.headerSubtitle}>Quick access to essential emergency numbers</p>
+        <BackButton />
+        <div style={styles.headerContent}>
+          <h1 style={styles.headerTitle}>🆘 Emergency Contacts</h1>
+          <p style={styles.headerSubtitle}>Quick access to essential emergency numbers</p>
+        </div>
       </header>
 
       <main style={styles.content}>

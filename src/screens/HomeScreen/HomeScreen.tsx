@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { MENU_ITEMS } from './constants';
+import ScrollToTop from '../../components/ScrollToTop';
 
 const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <div style={styles.container}>
+      <ScrollToTop />
       <header style={styles.header}>
         <div style={styles.headerTop}>
           <div style={styles.logoContainer}>

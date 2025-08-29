@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { LOCATIONS } from './constants';
+import ScrollToTop from '../../components/ScrollToTop';
+import BackButton from '../../components/BackButton';
 
 const JapanGuide: React.FC = () => {
-  const navigate = useNavigate();
   const [selectedLocation, setSelectedLocation] = useState<string>('kumamoto');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [hoveredBack, setHoveredBack] = useState(false);
 
   const currentLocation = LOCATIONS.find(loc => loc.id === selectedLocation);
 
@@ -37,23 +36,11 @@ const JapanGuide: React.FC = () => {
       : styles.ruleCard;
   };
 
-  const getBackButtonStyle = () => {
-    return hoveredBack 
-      ? { ...styles.backButton, ...styles.backButtonHover }
-      : styles.backButton;
-  };
-
   return (
     <div style={styles.container}>
+      <ScrollToTop />
       <header style={styles.header}>
-        <button
-          style={getBackButtonStyle()}
-          onMouseEnter={() => setHoveredBack(true)}
-          onMouseLeave={() => setHoveredBack(false)}
-          onClick={() => navigate('/')}
-        >
-          ←
-        </button>
+        <BackButton />
         <div style={styles.headerContent}>
           <h1 style={styles.headerTitle}>Japan Recycling Guide</h1>
           <p style={styles.headerSubtitle}>Location-specific waste sorting rules</p>

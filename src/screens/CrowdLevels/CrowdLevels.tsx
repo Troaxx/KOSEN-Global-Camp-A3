@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { TOURIST_AREAS, CROWD_LEVEL_INFO } from './constants';
 import { TouristArea } from '../../types';
+import ScrollToTop from '../../components/ScrollToTop';
+import BackButton from '../../components/BackButton';
 
 const CrowdLevels: React.FC = () => {
-  const navigate = useNavigate();
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [hoveredBack, setHoveredBack] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
 
   const locations = ['all', 'Tokyo', 'Kyoto', 'Osaka', 'Kumamoto'];
@@ -51,23 +50,11 @@ const CrowdLevels: React.FC = () => {
       : styles.buyButton;
   };
 
-  const getBackButtonStyle = () => {
-    return hoveredBack 
-      ? { ...styles.backButton, ...styles.backButtonHover }
-      : styles.backButton;
-  };
-
   return (
     <div style={styles.container}>
+      <ScrollToTop />
       <header style={styles.header}>
-        <button
-          style={getBackButtonStyle()}
-          onMouseEnter={() => setHoveredBack(true)}
-          onMouseLeave={() => setHoveredBack(false)}
-          onClick={() => navigate('/')}
-        >
-          ←
-        </button>
+        <BackButton />
         <div style={styles.headerContent}>
           <h1 style={styles.headerTitle}>Tourist Areas & Crowd Levels</h1>
           <p style={styles.headerSubtitle}>Real-time crowd data with dynamic pricing</p>

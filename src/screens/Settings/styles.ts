@@ -12,10 +12,16 @@ export const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: COLORS.primary,
     color: COLORS.background,
     padding: '20px',
-    textAlign: 'center' as const,
+    display: 'flex',
+    alignItems: 'center',
+    gap: '15px',
     borderRadius: '0 0 20px 20px',
     marginBottom: '20px',
     background: `linear-gradient(135deg, ${COLORS.primary} 0%, #2563EB 100%)`,
+  },
+  
+  headerContent: {
+    flex: 1,
   },
   
   headerTitle: {

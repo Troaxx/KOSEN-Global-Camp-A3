@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { styles } from './styles';
 import { VOICE_PHRASES } from './constants';
 import { VoicePhrase } from '../../types';
+import ScrollToTop from '../../components/ScrollToTop';
+import BackButton from '../../components/BackButton';
 
 const VoiceGuide: React.FC = () => {
-  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [hoveredBack, setHoveredBack] = useState(false);
   const [playingPhrase, setPlayingPhrase] = useState<string | null>(null);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
 
@@ -169,26 +168,11 @@ const VoiceGuide: React.FC = () => {
     return buttonStyle;
   };
 
-  const getBackButtonStyle = () => {
-    return hoveredBack 
-      ? { ...styles.backButton, ...styles.backButtonHover }
-      : styles.backButton;
-  };
-
   return (
     <div style={styles.container}>
+      <ScrollToTop />
       <header style={styles.header}>
-        <button
-          style={getBackButtonStyle()}
-          onMouseEnter={() => setHoveredBack(true)}
-          onMouseLeave={() => setHoveredBack(false)}
-          onTouchStart={() => setHoveredBack(true)}
-          onTouchEnd={() => setHoveredBack(false)}
-          onClick={() => navigate('/')}
-          aria-label="Go back to home"
-        >
-          ←
-        </button>
+        <BackButton />
         <div style={styles.headerContent}>
           <h1 style={styles.headerTitle}>Voice Guide</h1>
           <p style={styles.headerSubtitle}>Pre-set phrases for easy communication</p>

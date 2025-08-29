@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { styles } from './styles';
 import { JAPAN_RULES } from './constants';
+import ScrollToTop from '../../components/ScrollToTop';
+import BackButton from '../../components/BackButton';
 
 const JapanRules: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -38,9 +40,13 @@ const JapanRules: React.FC = () => {
 
   return (
     <div style={styles.container}>
+      <ScrollToTop />
       <header style={styles.header}>
-        <h1 style={styles.headerTitle}>Japan Rules & Etiquette</h1>
-        <p style={styles.headerSubtitle}>Essential cultural guidelines for respectful travel</p>
+        <BackButton />
+        <div style={styles.headerContent}>
+          <h1 style={styles.headerTitle}>Japan Rules & Etiquette</h1>
+          <p style={styles.headerSubtitle}>Essential cultural guidelines for respectful travel</p>
+        </div>
       </header>
 
       <main style={styles.content}>

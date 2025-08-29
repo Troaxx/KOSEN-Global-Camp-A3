@@ -3,6 +3,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { translations } from '../../translations';
 import { styles } from './styles';
 import { LANGUAGES, FONT_SIZES, VOICE_SPEEDS } from './constants';
+import ScrollToTop from '../../components/ScrollToTop';
+import BackButton from '../../components/BackButton';
 
 const Settings: React.FC = () => {
   const {
@@ -64,9 +66,13 @@ const Settings: React.FC = () => {
 
   return (
     <div style={getContainerStyle()}>
+      <ScrollToTop />
       <header style={styles.header}>
-        <h1 style={styles.headerTitle}>⚙️ {t.settingsTitle}</h1>
-        <p style={styles.headerSubtitle}>Customize your experience</p>
+        <BackButton />
+        <div style={styles.headerContent}>
+          <h1 style={styles.headerTitle}>⚙️ {t.settingsTitle}</h1>
+          <p style={styles.headerSubtitle}>Customize your experience</p>
+        </div>
       </header>
 
       <main style={styles.content}>
