@@ -1,174 +1,102 @@
-# KOSEN Global Camp - Smart Tourism Management App
+# Hello Japan - KOSEN Global Camp Solution
 
-A comprehensive mobile-first web application designed to address overtourism challenges in Japan through intelligent crowd management, sustainable tourism practices, and enhanced visitor experiences.
+A prototype mobile-first web application created for **KOSEN Global Camp** to address overtourism challenges in Japan through smart technology solutions.
 
-## About This Project
+## About the Project
 
-KOSEN Global Camp is a React-based web application that provides tourists and local authorities with tools to manage and optimize tourism flows, reduce environmental impact, and improve visitor satisfaction. The app addresses the critical issue of overtourism by implementing smart tourism management strategies.
+This application was developed as part of **Group A3** during the KOSEN Global Camp, where students from:
+- **Kyushu Region** (Japan)
+- **Thailand** (PCHSS Princess Chulabhorn Science High School Loei)
+- **Singapore** (TP)
 
-## How This App Solves Overtourism
+came together to solve **overtourism & smart disaster prevention solutions** for Japan.
 
-### 1. **Dynamic Pricing & Crowd Management**
-- **Real-time Crowd Monitoring**: Tracks visitor density at popular tourist destinations
-- **Dynamic Pricing System**: Adjusts entry fees based on crowd levels to incentivize off-peak visits
-- **Smart Scheduling**: Encourages visitors to choose less crowded times through pricing incentives
+## Live Demo
 
-### 2. **Visitor Distribution & Flow Control**
-- **Crowd Level Indicators**: Provides real-time information about tourist area congestion
-- **Alternative Destination Suggestions**: Guides visitors to less crowded locations
-- **Peak Time Avoidance**: Helps tourists plan visits during optimal, less crowded periods
+🌐 **Live Demo**: [https://kosena3.netlify.app/](https://kosena3.netlify.app/)
 
-### 3. **Sustainable Tourism Practices**
-- **Waste Management Guidance**: Location-specific recycling rules to reduce environmental impact
-- **Cultural Sensitivity Training**: Japan-specific etiquette and rules to minimize cultural friction
-- **Responsible Tourism Education**: Promotes sustainable visitor behavior
+## Features
 
-### 4. **Enhanced Visitor Experience**
-- **Multi-language Support**: Breaks down language barriers for international tourists
-- **Emergency Information**: Provides safety and emergency contact information
-- **Voice Guide Integration**: Accessible tourism information for all visitors
+### 1. Dynamic Pricing Based on Crowd Levels
+- Real-time crowd level monitoring
+- Adaptive pricing system that adjusts based on tourist density
+- Helps distribute tourist flow and reduce overcrowding
 
-### 5. **Data-Driven Tourism Planning**
-- **Crowd Analytics**: Historical and real-time data for better trip planning
-- **Visitor Flow Optimization**: Helps authorities manage infrastructure and resources
-- **Sustainable Capacity Management**: Prevents overcrowding at sensitive cultural sites
+### 2. Japanese Rules & Etiquette Guide
+- Comprehensive rulebook covering essential Japanese customs
+- Cultural etiquette guidelines for tourists
+- Helps visitors respect local traditions and avoid cultural misunderstandings
 
-## Key Features
+### 3. Voice Command System
+- Interactive voice button for learning Japanese phrases
+- Displays phrases in three formats:
+  - **English** (translation)
+  - **Romaji** (romanized pronunciation)
+  - **Japanese** (original script)
+- Perfect for tourists to communicate basic needs
 
-### 🏛️ **Crowd Levels & Dynamic Pricing**
-- Real-time crowd monitoring at major tourist destinations
-- Dynamic pricing based on current visitor density
-- Location filtering (Tokyo, Kyoto, Osaka, Kumamoto)
-- Interactive crowd level indicators with color coding
+## Technical Details
 
-### 🗑️ **Japan Recycling Guide**
-- Location-specific waste sorting rules
-- Comprehensive recycling categories
-- Environmental responsibility education
-- Regional waste management differences
-
-### 📱 **Voice Guide System**
-- Audio-based tourism information
-- Accessibility features for all visitors
-- Multi-language voice support
-- Hands-free navigation assistance
-
-### 🚨 **Emergency Information**
-- Emergency contact numbers
-- Safety guidelines for tourists
-- Location-based emergency services
-- Quick access to help resources
-
-### ⚙️ **Settings & Localization**
-- Multi-language interface support
-- User preference management
-- Accessibility options
-- Regional customization
-
-## Technology Stack
-
-- **Frontend**: React 19.1.1 with TypeScript
-- **Routing**: React Router DOM 6.28.0
-- **Styling**: CSS-in-JS with custom design system
-- **State Management**: React Context API
-- **Build Tool**: Create React App 5.0.1
-- **Language Support**: Internationalization (i18n) ready
+- **Platform**: Web application (mobile-optimized)
+- **Framework**: React with TypeScript
+- **Design**: Mobile-first responsive design
+- **Deployment**: Netlify
 
 ## Getting Started
 
 ### Prerequisites
 - Node.js (version 16 or higher)
-- npm or yarn package manager
+- npm or yarn
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone [repository-url]
-   cd kosen-app
-   ```
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd kosen-app
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+2. Install dependencies:
+```bash
+npm install
+```
 
-3. **Start the development server**
-   ```bash
-   npm start
-   ```
+3. Start the development server:
+```bash
+npm start
+```
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### Available Scripts
+### Building for Production
 
-- `npm start` - Runs the app in development mode
-- `npm test` - Launches the test runner
-- `npm run build` - Builds the app for production
-- `npm run eject` - Ejects from Create React App (one-way operation)
+```bash
+npm run build
+```
 
 ## Project Structure
 
 ```
 src/
 ├── components/          # Reusable UI components
-│   ├── Layout/         # Main layout wrapper
-│   ├── Navbar/         # Navigation component
-│   └── SplashScreen/   # App loading screen
+├── contexts/           # React contexts (language management)
 ├── screens/            # Main application screens
-│   ├── CrowdLevels/    # Crowd monitoring & pricing
+│   ├── CrowdLevels/   # Dynamic pricing & crowd monitoring
 │   ├── Emergency/      # Emergency information
-│   ├── HomeScreen/     # Main dashboard
-│   ├── JapanGuide/     # Cultural & recycling guide
-│   ├── JapanRules/     # Etiquette & rules
+│   ├── HomeScreen/     # Main landing page
+│   ├── JapanGuide/     # Cultural guide
+│   ├── JapanRules/     # Rules & etiquette
 │   ├── Settings/       # App configuration
-│   └── VoiceGuide/     # Audio assistance
-├── contexts/           # React context providers
-├── translations/       # Internationalization files
-└── types/             # TypeScript type definitions
+│   └── VoiceGuide/     # Voice command system
+├── translations/        # Multi-language support
+└── types/              # TypeScript type definitions
 ```
 
-## Overtourism Impact
-
-This application directly addresses several overtourism challenges:
-
-### **Environmental Impact Reduction**
-- Prevents overcrowding at sensitive natural and cultural sites
-- Promotes sustainable waste management practices
-- Encourages off-peak visitation to reduce resource strain
-
-### **Cultural Preservation**
-- Minimizes cultural friction through education
-- Protects historical sites from excessive wear
-- Promotes respectful tourism behavior
-
-### **Infrastructure Optimization**
-- Better distribution of visitors across destinations
-- Reduced strain on local transportation and services
-- Improved emergency response coordination
-
-### **Visitor Experience Enhancement**
-- Less crowded, more enjoyable visits
-- Better access to cultural experiences
-- Reduced wait times and frustration
-
-## Future Enhancements
-
-- **AI-powered Crowd Prediction**: Machine learning for crowd forecasting
-- **Blockchain Ticketing**: Secure, transparent dynamic pricing
-- **IoT Integration**: Real-time sensor data from tourist sites
-- **Mobile App**: Native iOS and Android applications
-- **Analytics Dashboard**: Comprehensive tourism data insights
-
-## Contributing
-
-This project is part of the KOSEN Global Camp initiative. Contributions are welcome to improve overtourism management solutions.
 
 ## License
 
-This project is developed for educational and research purposes in addressing global tourism challenges.
+This project is part of the KOSEN Global Camp initiative and is intended for educational and demonstration purposes.
 
 ---
 
-**KOSEN Global Camp** - Building sustainable tourism solutions for a better world.
+**Developed with ❤️ for KOSEN Global Camp - Solving Japan's Overtourism Challenges**
