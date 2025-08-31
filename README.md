@@ -5,7 +5,7 @@ A prototype mobile-first web application created for **KOSEN Global Camp** to ad
 ## About the Project
 
 This application was developed as part of **Group A3** during the KOSEN Global Camp, where students from:
-- **Kyushu Region** (Japan)
+- **Kyushu Region KOSENs** (Japan)
 - **Thailand** (PCHSS Princess Chulabhorn Science High School Loei)
 - **Singapore** (TP)
 
